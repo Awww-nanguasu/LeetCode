@@ -2,7 +2,7 @@
 # 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。
 # 你可以按任意顺序返回答案。
 
-#hashtable ✔
+#hashtable ⭐⭐
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hastable = dict()
