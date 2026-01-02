@@ -12,3 +12,16 @@ class Solution:
             left_height = self.maxDepth(root.left) 
             right_height = self.maxDepth(root.right) 
             return max(left_height, right_height) + 1 
+
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root: return 0
+        queue, res = [root], 0
+        while queue:
+            tmp = []
+            for node in queue:
+                if node.left: tmp.append(node.left)
+                if node.right: tmp.append(node.right)
+            queue = tmp
+            res += 1
+        return res
