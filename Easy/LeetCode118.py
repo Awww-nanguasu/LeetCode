@@ -7,7 +7,7 @@ class Solution:
                 if j == 0 or j == i:
                     row.append(1)
                 else:
-                    row.append(ret[i - 1][j - 1] + ret[i - 1][j - 1])
+                    row.append(ret[i - 1][j] + ret[i - 1][j - 1])
             ret.append(row)
         return ret
 
