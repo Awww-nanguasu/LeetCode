@@ -18,19 +18,44 @@
 
 # Failed 
 # In Python language: -123%10= -7 
-def reverse(x: int) -> int:    
-        res = 0
-        while x!=0:
-            tmp = x%10
-            if (res< -2**31 // 10) or (tmp<-8):
-                return 0
+# def reverse(x: int) -> int:    
+#         res = 0
+#         while x!=0:
+#             tmp = x%10
+#             if (res< -2**31 // 10) or (tmp<-8):
+#                 return 0
             
-            if (res> (2**31 - 1) // 10) or (tmp>7):
-                return 0
+#             if (res> (2**31 - 1) // 10) or (tmp>7):
+#                 return 0
         
-            res = res*10 + tmp
-            print(res)
-            x //= 10
-        return res
+#             res = res*10 + tmp
+#             print(res)
+#             x //= 10
+#         return res
 
-print(reverse(-123))
+def reverse(x: int) -> int:
+    flag = 0
+    if x < 0:
+        flag = 1
+        x = abs(x)
+
+    res = 0
+    while x!=0:
+        tmp = x%10
+    
+        print(res>(2**31 - 1)//10)
+
+        if (res> (2**31 - 1) // 10) or (res== (2**31 - 1) and tmp>7):
+            return 0
+        
+        res = res*10 + tmp
+        x //= 10
+
+    if flag:
+        res = -res
+        if res< -2**31 -1:
+            return 0
+
+    return res
+
+print(reverse(90000))
