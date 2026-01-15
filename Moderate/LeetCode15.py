@@ -1,3 +1,26 @@
+def threeSum(nums):
+    nums.sort()
+    res = 0
+    tup = []
+    i = 0
+    j = len(nums) - 1
+    while i<j:
+        if nums[j]<0:
+            break
+        res = nums[i] + nums[j]
+        if -res in nums[i+1:j]:
+            new_list = [nums[i], -res, nums[j]]
+            if new_list not in tup:
+                tup.append(new_list)
+
+        if res>=0:
+            j -= 1
+            
+        if res<0:
+            i += 1
+    return tup
+
+
 #Double pointer  ⭐failed [0, 0, 0, 0]
 def threeSum(nums):
     nums.sort()
@@ -6,7 +29,7 @@ def threeSum(nums):
     i = 0
     j = len(nums) - 1
     while i<j:
-        if nums[j]<=0:
+        if nums[j]<0:
             break
         res = nums[i] + nums[j]
         if -res in nums[i+1:j]:
@@ -18,7 +41,7 @@ def threeSum(nums):
         if res<0:
             i += 1
     return tup
-print(threeSum([-1,0,1,2,-1,-4]))
+
 # class Solution:
 #     def threeSum(self, nums: List[int]) -> List[List[int]]:
         
