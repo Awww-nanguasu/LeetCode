@@ -19,28 +19,28 @@ def threeSum(nums):
         if res<0:
             i += 1
     return tup
-
+print(threeSum([-100,-70,-60,110,120,130,160]))
 
 #Double pointer  ⭐failed [0, 0, 0, 0]
-def threeSum(nums):
-    nums.sort()
-    res = 0
-    tup = []
-    i = 0
-    j = len(nums) - 1
-    while i<j:
-        if nums[j]<0:
-            break
-        res = nums[i] + nums[j]
-        if -res in nums[i+1:j]:
-            tup.append([nums[i], -res, nums[j]])
+# def threeSum(nums):
+#     nums.sort()
+#     res = 0
+#     tup = []
+#     i = 0
+#     j = len(nums) - 1
+#     while i<j:
+#         if nums[j]<0:
+#             break
+#         res = nums[i] + nums[j]
+#         if -res in nums[i+1:j]:
+#             tup.append([nums[i], -res, nums[j]])
 
-        if res>=0:
-            j -= 1
+#         if res>=0:
+#             j -= 1
             
-        if res<0:
-            i += 1
-    return tup
+#         if res<0:
+#             i += 1
+#     return tup
 
 # class Solution:
 #     def threeSum(self, nums: List[int]) -> List[List[int]]:
