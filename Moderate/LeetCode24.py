@@ -6,6 +6,7 @@
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         pre = head
+        end = ListNode()
         flag = 0
         while(1):
             if pre is None:
@@ -15,15 +16,16 @@ class Solution:
             if cur is None:
                 break
 
-            nex = cur.next
-            
             pre.next = cur.next
             cur.next = pre
 
             if flag == 0:
                 head = cur
                 flag = 1
-                
+
+            end.next = cur
+
+            end = pre                 
             pre = pre.next
-        
-        return head`
+
+        return head
