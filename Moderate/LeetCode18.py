@@ -54,3 +54,58 @@ class Solution:
                         right -= 1
         
         return quadruplets
+#failed
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        n = len(nums)
+        nums.sort()
+
+        if n<4:
+            return list()
+
+        if n == 4:
+            if sum(nums) == target:
+                return [nums]
+            else:
+                return list() 
+
+
+        left1 = 0
+        left2 = 1
+        left3 = 2
+        left4 = 3
+
+        result = []
+
+        for i in range(n-4):
+            if i>0 and nums[i] == nums[i-1]:
+                continue
+            for j in range(i+1, n-3):
+                if j>i+1 and nums[j] == nums[j-1]:
+                    continue
+                fourth = n - 1
+                third = j + 1
+
+                while(third < fourth):
+                    if third > j+1 and nums[third] == nums[third-1]:
+                        third = third + 1
+                        continue
+
+                    if fourth < n-1 and nums[fourth] == nums[fourth+1]:
+                        fourth = fourth - 1
+                        continue
+
+                    four_sum = nums[i] + nums[j] + nums[third] + nums[fourth]
+                    if four_sum > target:
+                        fourth = fourth - 1
+                        continue
+                    
+                    if four_sum < target:
+                        third = third + 1
+                        continue
+
+                    if four_sum == target:
+                        result.append([nums[i], nums[j], nums[third], nums[fourth]])
+                        third = third + 1
+                        continue
+        return result
