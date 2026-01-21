@@ -69,12 +69,6 @@ class Solution:
             else:
                 return list() 
 
-
-        left1 = 0
-        left2 = 1
-        left3 = 2
-        left4 = 3
-
         result = []
 
         for i in range(n-4):
