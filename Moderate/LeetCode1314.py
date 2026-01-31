@@ -1,3 +1,29 @@
+class Solution:
+    def Sum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        self.row = len(mat)
+        self.col = len(mat[0])
+
+        preSum = [[0]*(self.col+1) for _ in range(self.row+1)]
+        for i in range(1, self.row+1):
+            for j in range(1, self.col+1):
+                preSum[i][j] = preSum[i-1][j]+preSum[i][j-1]-preSum[i-1][j-1]+mat[i-1][j-1]
+        return preSum
+
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        preSum = self.Sum(mat, k)
+        print(preSum)
+        Answer = [[0]*self.col for _ in range(self.row)]
+        for i in range(self.row):
+            for j in range(self.col):
+                r1 = max(i - k, 0)
+                c1 = max(j - k, 0)
+                r2 = min(i + k + 1, self.row)
+                c2 = min(j + k + 1, self.col)
+                Answer[i][j] = preSum[r2][c2] - preSum[r2][c1] - preSum[r1][c2] + preSum[r1][c1]
+
+        return Answer
+
+
 from typing import List
 
 class Solution:
