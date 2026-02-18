@@ -19,3 +19,23 @@ class Solution:
     def preorder(self, root: 'Node') -> List[int]:
         self.travel(root)
         return self.List
+    
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val: Optional[int] = None, children: Optional[List['Node']] = None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution:
+    def __init__(self):
+        self.List = []
+
+    def preorder(self, root: 'Node') -> List[int]:
+        if root != None:
+            self.List.append(root.val)
+            for x in root.children:
+                self.preorder(x)
+
+        return self.List
