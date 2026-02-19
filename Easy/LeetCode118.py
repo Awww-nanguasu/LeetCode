@@ -11,5 +11,32 @@ class Solution:
             ret.append(row)
         return ret
 
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if root == None:
+            return 0
+        Depth = 1
+        queue = [[root]]
         
+        while queue != [[]]:
+            # print(queue)
+            tmp = []
+            for x in queue[0]:
+                # print(queue[0])
+                if x.left == None and x.right == None:
+                    return Depth
+                if x.left != None:
+                    tmp.append(x.left)
+                if x.right != None:
+                    tmp.append(x.right)
+
+            queue.append(tmp)
+            queue.pop(0)
+            Depth = Depth + 1
+        return Depth
