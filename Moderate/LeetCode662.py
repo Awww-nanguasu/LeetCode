@@ -48,3 +48,25 @@ class Solution:
             res = max(res, arr[-1][1] - arr[0][1] + 1)
             arr = tmp
         return res
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        ans, queue = 0, deque([(1, root)])
+        while queue:
+            mn, mx = inf, 0
+            for _ in range(len(queue)):
+                code, node = queue.popleft()
+                if node.left:
+                    queue.append((code * 2, node.left))
+                if node.right:
+                    queue.append((code * 2 + 1, node.right))
+                mn, mx = min(code, mn), max(code, mx)
+            ans = max(ans, mx - mn + 1)
+        return ans
+
