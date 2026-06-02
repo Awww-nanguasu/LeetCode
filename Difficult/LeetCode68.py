@@ -47,3 +47,5 @@ class Solution:
             line.append(word)
             str_num += len(word)
         return res + [' '.join(line).ljust(maxWidth)]
+
+
